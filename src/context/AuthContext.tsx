@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState } from 'react';
 import { User, Item } from '../types';
 
 interface AuthContextType {
@@ -20,7 +20,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     { id: '1', username: 'Hero', gold: 500, inventory: [], history: [] } // Default user
   ]);
 
-  const login = (username: string, password: string) => {
+  const login = (username: string, _password: string) => {
     // Password check skipped for simplicity in mock
     const foundUser = users.find(u => u.username === username);
     if (foundUser) {
@@ -30,7 +30,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return false;
   };
 
-  const register = (username: string, password: string) => {
+  const register = (username: string, _password: string) => {
     if (users.find(u => u.username === username)) return false;
     const newUser: User = {
       id: Math.random().toString(36).substr(2, 9),
